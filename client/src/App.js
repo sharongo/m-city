@@ -13,7 +13,7 @@ function App() {
     <div>
       <Header />
       <Switch>
-        <Route exact pacth='/' component={HomePage} />
+        <Route exact path='/' component={HomePage} />
       </Switch>
       <Footer />
     </div>
