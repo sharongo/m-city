@@ -1,25 +1,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMatches } from '../../redux/match/match.actions'
+import { getMatches } from '../../redux/match/match.actions';
+import MatchesBlock from './matches-block.component'
+import Slide from 'react-reveal/Slide'
+
 
 class Blocks extends Component {
 
-    componentDidMount(){
-        const {getMatches} = this.props;
+    componentDidMount() {
+        const { getMatches } = this.props;
         getMatches();
+
     }
 
-    showMatches = () => {
+    showMatches = (matches) => {
         return (
-            <div>
-                match
-            </div>
+
+            matches && matches.length > 0 && matches.map(match => (
+                <Slide bottom key={match.id}>
+                    <div className="item">
+                        <div className="wrapper">
+                            <MatchesBlock match={match} />
+                        </div>
+                    </div>
+                </Slide>
+            ))
+
+
+
         )
     }
 
     render() {
 
-        const {matches} = this.props;
+        const { matches } = this.props;
 
         return (
             <div className="home_matches">
